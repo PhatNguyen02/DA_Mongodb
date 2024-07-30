@@ -1,0 +1,4 @@
+1 ĐK ,ĐX , ĐN (Role)
+2 CRUD Sản phẩm , loại , giỏ hàng , comment , chi tiết sản phẩm , Thanh toán 
+3 Hóa đơn (chi tiết hóa đơn) , 
+4 Admin , CRUD (user , product , categories , đơn hàng) 

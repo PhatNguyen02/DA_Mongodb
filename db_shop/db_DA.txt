@@ -1,0 +1,115 @@
+Orders 
+/** 
+* Paste one or more documents here
+*/
+{
+  "order_id": "ord001",
+  "customer_name": "Nguyen Van A",
+  "order_date": {
+    "$date": "2024-07-19T00:00:00.000Z"
+  },
+  "total_amount": 1050000,
+  "items": [
+    {
+      "product_id": "sp01",
+      "quantity": 2
+    },
+    {
+      "product_id": "sp02",
+      "quantity": 1
+    }
+  ],
+  "shipping_address": {
+    "street": "123 Nguyen Van Linh",
+    "city": "Ho Chi Minh",
+    "country": "Vietnam",
+    "zip_code": "700000"
+  },
+  "payment_method": "Credit Card",
+  "status": "Pending"
+}
+
+Products
+
+/** 
+* Paste one or more documents here
+*/
+{
+  "product_id": "sp02",
+  "product_name": "Kem ",
+  "category": "Makeup",
+  "subcategory": "Eyes",
+  "price": 450000,
+  "rating": 4.3,
+  "sizes": [
+    "5ml",
+    "7ml"
+  ],
+  "link": [
+    "url1",
+    "url2"
+  ],
+  "description": "Không có gì",
+  "reviews": [
+    {
+      "user": "Phát",
+      "rating": 5,
+      "comment": "Great eyeliner!"
+    },
+    {
+      "user": "Trinh",
+      "rating": 1,
+      "comment": "So bad!"
+    }
+  ],
+  "tags": [
+    "Mykaa",
+    "Eyes",
+    "Makeup",
+    "Eyeliner"
+  ]
+}
+
+Users
+
+/** 
+* Paste one or more documents here
+*/
+{
+  "user_id": "user001",
+  "username": "thanhpham",
+  "full_name": "Phạm Huỳnh Hữu Thành",
+  "email": "thanhphh@example.com",
+  "password": "hashed_password_here",
+  "phone_number": "0901234567",
+  "address": {
+    "street": "456 Le Van Sy",
+    "city": "Ho Chi Minh",
+    "country": "Vietnam",
+    "zip_code": "700000"
+  },
+  "date_registered": {
+    "$date": "2024-07-19T08:00:00.000Z"
+  },
+  "orders": [
+    {
+      "order_id": "ord001",
+      "order_date": {
+        "$date": "2024-07-19T00:00:00.000Z"
+      },
+      "total_amount": 1050000
+    },
+    {
+      "order_id": "ord002",
+      "order_date": {
+        "$date": "2024-07-18T00:00:00.000Z"
+      },
+      "total_amount": 750000
+    }
+  ],
+  "payment_methods": [
+    "Credit Card",
+    "PayPal"
+  ],
+  "active": true
+}
