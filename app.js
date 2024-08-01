@@ -21,7 +21,7 @@ const api = process.env.API_URL;
 
 app.use(morgan('tiny'));
 app.use(express.json());
-
+app.use(express.urlencoded());
 
 
 
@@ -37,7 +37,10 @@ app.use(`${api}/products` , productsRouter);
 
 
 
+app.get('/', (req, res) => {
 
+res.sendFile(__dirname + '/Cua_Hang_My_Pham_Online/index.html');
+})
 
 
 
@@ -55,3 +58,5 @@ const PORT = process.env.PORT || 3002;
   console.log(`Server is running http://localhost:${PORT}`);
 });
  
+// app.js
+console.log('Hello, world!');
