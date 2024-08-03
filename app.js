@@ -11,18 +11,18 @@
 
 // const Product = require('./model/products');
 
-const express = require('express');
-const app = express();
-// const bodyParser = require('body-parser');
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-// const authJwt = require('./helpers/jwt');
-require('dotenv').config();
+// const express = require('express');
+// const app = express();
+// // const bodyParser = require('body-parser');
+// const morgan = require('morgan');
+// const mongoose = require('mongoose');
+// const cors = require('cors');
+// const session = require('express-session');
+// const MongoStore = require('connect-mongo');
+// // const authJwt = require('./helpers/jwt');
+// require('dotenv').config();
 
-const Product = require('./model/products');
+// const Product = require('./model/products');
 
 
 
@@ -95,29 +95,34 @@ const api = process.env.API_URL || '/api';
 app.use(cors());
 app.use(morgan('tiny'));
 app.use(express.json());
-
-app.use(express.urlencoded({ extended: true }));
-
-
-// app.use(express.static(path.join(__dirname, 'Source', 'Cua_Hang_My_Pham_Online')));
+app.use(express.urlencoded());
+app.use(cors());
 
 
-// app.get('/index', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'Source', 'Cua_Hang_My_Pham_Online','htmldemo.net','argima','index-two.html'));
-// });
+// app.use(session({
+//   secret: process.env.SESSION_SECRET,
+//   resave: false,
+//   saveUninitialized: false,
+//   store: MongoStore.create({
+//     mongoUrl: process.env.CONNECTION_STRING,
+//     collectionName: 'sessions'
+//   }),
+//   cookie: {
+//     maxAge: 1000 * 60 * 60 * 24 // 1 day
+//   }
+// }));
 
 
-
+// Routers
 const productsRouter = require('./routes/products');
-
-app.use(`${api}/products`, productsRouter);
-
 const authRouter = require('./routes/auth');
+
 // const categoriesRouter = require('./routers/categories');
 // const userRouter = require('./routers/users');
 
 app.use(`${api}/products` , productsRouter);
 app.use(`${api}/auth` , authRouter);
+app.use(`${api}/users` , usersRouter);
 // app.use(`${api}/categories` , categoriesRouter);
 //app.use(`${api}/users` , userRouter);
 
