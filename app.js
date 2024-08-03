@@ -1,15 +1,15 @@
 
-// const express = require('express');
-// const app = express();
-// // const bodyParser = require('body-parser');
-// const morgan = require('morgan');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// const path = require('path');
-// // const authJwt = require('./helpers/jwt');
-// require('dotenv').config();
+const express = require('express');
+const app = express();
+// const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const path = require('path');
+// const authJwt = require('./helpers/jwt');
+require('dotenv').config();
 
-// const Product = require('./model/products');
+const Product = require('./model/products');
 
 // const express = require('express');
 // const app = express();
@@ -28,17 +28,17 @@
 
 // const api = process.env.API_URL;
 
-// // app.use(express.static(path.join(__dirname,'../Source/Cua_Hang_My_Pham_Online')));
+app.use(express.static(path.join(__dirname,'../Source/Cua_Hang_My_Pham_Online')));
 
-// //cors
-// app.use(cors()); 
-// app.options('*', cors());
+//cors
+app.use(cors()); 
+app.options('*', cors());
 
 // //middleware
 
-// app.use(morgan('tiny'));
-// app.use(express.json());
-// app.use(express.urlencoded());
+app.use(morgan('tiny'));
+app.use(express.json());
+app.use(express.urlencoded());
 
 
 
@@ -64,7 +64,12 @@
 //         message: '<h1 style:"color:red">Not found</h1>'
 //     })
 // })
+// app.use(express.static(path.join(__dirname, 'Source', 'Cua_Hang_My_Pham_Online')));
 
+
+// app.get('/index', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'Source', 'Cua_Hang_My_Pham_Online','htmldemo.net','argima','argima','index-two.html'));
+// });
 
 
 
@@ -92,11 +97,7 @@ const api = process.env.API_URL || '/api';
 // Cấu hình Express để phục vụ các file tĩnh từ thư mục Cua_Hang_My_Pham_Online
 
 
-app.use(cors());
-app.use(morgan('tiny'));
-app.use(express.json());
-app.use(express.urlencoded());
-app.use(cors());
+
 
 
 // app.use(session({
@@ -116,6 +117,7 @@ app.use(cors());
 // Routers
 const productsRouter = require('./routes/products');
 const authRouter = require('./routes/auth');
+const usersRouter = require('./routes/user');
 
 // const categoriesRouter = require('./routers/categories');
 // const userRouter = require('./routers/users');
@@ -131,7 +133,7 @@ app.use(`${api}/users` , usersRouter);
 
 app.get('/', (req, res) => {
 
-res.sendFile(__dirname + '/Cua_Hang_My_Pham_Online/index.html');
+res.sendFile(__dirname + '/Source/Cua_Hang_My_Pham_Online/htmldemo.net/argima1/argima/index-two.html');
 })
 
 
