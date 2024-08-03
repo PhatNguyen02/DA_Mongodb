@@ -1,3 +1,4 @@
+
 // const express = require('express');
 // const app = express();
 // // const bodyParser = require('body-parser');
@@ -9,6 +10,20 @@
 // require('dotenv').config();
 
 // const Product = require('./model/products');
+
+const express = require('express');
+const app = express();
+// const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+// const authJwt = require('./helpers/jwt');
+require('dotenv').config();
+
+const Product = require('./model/products');
+
 
 
 // const api = process.env.API_URL;
@@ -69,13 +84,8 @@
  
 // // app.js
 // console.log('Hello, world!');
-const express = require('express');
-const app = express();
-const morgan = require('morgan');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const path = require('path');
-require('dotenv').config();
+
+
 
 const api = process.env.API_URL || '/api';
 
@@ -85,18 +95,41 @@ const api = process.env.API_URL || '/api';
 app.use(cors());
 app.use(morgan('tiny'));
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use(express.static(path.join(__dirname, 'Source', 'Cua_Hang_My_Pham_Online')));
+// app.use(express.static(path.join(__dirname, 'Source', 'Cua_Hang_My_Pham_Online')));
 
 
-app.get('/index', (req, res) => {
-    res.sendFile(path.join(__dirname, 'Source', 'Cua_Hang_My_Pham_Online','htmldemo.net','argima','index-two.html'));
-});
+// app.get('/index', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'Source', 'Cua_Hang_My_Pham_Online','htmldemo.net','argima','index-two.html'));
+// });
+
+
 
 const productsRouter = require('./routes/products');
+
 app.use(`${api}/products`, productsRouter);
+
+const authRouter = require('./routes/auth');
+// const categoriesRouter = require('./routers/categories');
+// const userRouter = require('./routers/users');
+
+app.use(`${api}/products` , productsRouter);
+app.use(`${api}/auth` , authRouter);
+// app.use(`${api}/categories` , categoriesRouter);
+//app.use(`${api}/users` , userRouter);
+
+
+
+
+app.get('/', (req, res) => {
+
+res.sendFile(__dirname + '/Cua_Hang_My_Pham_Online/index.html');
+})
+
+
 
 app.use((req, res) => {
     res.status(404).send({
