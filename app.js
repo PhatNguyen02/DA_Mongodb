@@ -33,38 +33,20 @@ const mongoStore = new MongoStore({
     collectionName: 'sessions'
   });
   
-  // Use session middleware
-  app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    store: mongoStore,
-    cookie: {
-        maxAge: 1000 * 60 * 60 * 24
-      }
-  }));
-// app.use(session({
-//   secret: process.env.SESSION_SECRET,
-//   resave: false,
-//   saveUninitialized: false,
-//   store: MongoStore.create({
-//     mongoUrl: process.env.CONNECTION_STRING,
-//     collectionName: 'sessions'
-//   }),
-//   cookie: {
-//     maxAge: 1000 * 60 * 60 * 24 // 1 day
-//   }
-// }));
+
 
 
 // Routers
 const productsRouter = require('./routes/products');
+const usersRouter = require('./routes/user');
 const authRouter = require('./routes/auth');
+
 // const categoriesRouter = require('./routers/categories');
 // const userRouter = require('./routers/users');
 
 app.use(`${api}/products` , productsRouter);
 app.use(`${api}/auth` , authRouter);
+app.use(`${api}/users` , usersRouter);
 // app.use(`${api}/categories` , categoriesRouter);
 //app.use(`${api}/users` , userRouter);
 
